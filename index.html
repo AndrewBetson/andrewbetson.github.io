@@ -1,1 +1,249 @@
-test
+<!-- Temporary, Clanker-made website until the community is established enough to justify paying somoene to make a real one. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ball Lickers United | TF2 Community Servers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2b404b; --panel:#38525f; --paper:#f3f2dd; --ink:#1f3039; --text:#f3f2dd; --muted:#a9c0cc;
+  --blu:#e3d56c; --blu-deep:#4a7084; --teal:#567c8e; --line:#4a6676;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@font-face {
+    font-family: "Compacta Black";
+    src: url("fonts/compacta_black.otf");
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 Barlow,"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Compacta Black",Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;flex-wrap:wrap}
+nav .logo img{width:34px;height:34px;border-radius:3px;vertical-align:middle;margin-right:10px}
+nav .logo{font-family:"Compacta Black",Georgia,serif;font-size:1.1rem;text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;color:var(--muted);font-weight:600}
+nav ul a:hover{color:var(--text)}
+
+.hero{position:relative;overflow:hidden;border-radius:6px;margin-top:8px;
+  background:var(--teal);border:4px solid var(--blu);}
+.hero .tag{display:inline-block;background:var(--blu);color:var(--ink);padding:4px 14px;border-radius:3px;font-weight:600;margin-bottom:16px}
+.hero .inner{position:relative;z-index:1;padding:72px 24px 64px;text-align:center}
+.hero h1{font-size:clamp(2.4rem,8vw,5rem);color:var(--paper);letter-spacing:.02em;text-shadow:0 3px 0 rgba(20,40,52,.45)}
+.hero p{max-width:34em;margin:18px auto 28px;font-size:1.15rem;color:var(--paper)}
+.btn{display:inline-block;background:var(--blu);color:var(--ink);padding:12px 24px;border-radius:4px;font-weight:600;text-decoration:none;border:0;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--paper)}
+
+section{padding:64px 0 0}
+section h2{font-size:2rem;margin-bottom:20px}
+.paper{background:var(--paper);color:var(--ink);border-radius:6px;padding:28px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.about p{margin:0 0 14px}
+.facts{list-style:none;margin:0;padding:0}
+.facts{text-align:right;overflow-wrap:anywhere}
+.facts li{display:flex;flex-direction:column;align-items:flex-end;padding:9px 0;border-bottom:1px solid #c9c8a6}
+.facts li span{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:#4a6676}
+.facts a{color:var(--blu-deep);font-weight:600;text-underline-offset:3px}
+.facts li:last-child{border:0}
+.facts b{font-weight:600}
+
+.servers{display:grid;gap:12px}
+.server{display:grid;grid-template-columns:6px 1fr auto auto;gap:18px;align-items:center;background:var(--panel);border-radius:6px;padding:16px 20px 16px 0;overflow:hidden}
+.server .bar{align-self:stretch;background:var(--blu)}
+.server h3{font-size:1.1rem;margin-bottom:4px}
+.server .meta{color:var(--muted);font-size:.95rem}
+.players{font-weight:600;white-space:nowrap}
+.actions{display:flex;gap:8px}
+.actions .btn{padding:8px 14px;font-size:.95rem}
+.actions .ghost{background:transparent;color:var(--text);border:1px solid var(--muted)}
+.actions .ghost:hover{background:var(--line)}
+.note{color:var(--muted);font-size:.9rem;margin-top:12px}
+
+/* Rules list (direct children only, so nested lists don't inherit numbering) */
+.rules{counter-reset:r;list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.rules > li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;gap:14px}
+.rules > li::before{content:counter(r);font-family:"Alfa Slab One",Georgia,serif;font-size:1.6rem;color:var(--blu-deep);line-height:1.2}
+.rules strong{display:block;font-weight:600;font-size:1.15rem;margin-bottom:2px}
+.rules span{color:#33464f;font-size:1.05rem;line-height:1.55}
+
+/* Class limits, grouped by role (nested inside a rule) */
+.class-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:14px}
+.role-group{--accent:var(--blu-deep);border-top:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 0 4px 4px;padding:10px 12px 12px}
+.role-group h3{font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.role-group.pick{--accent:#3f7d3f}
+.role-group.support{--accent:#2f6f9f}
+.role-group.power{--accent:#b23a2b}
+
+/* Optional: tint the max pill to match its role */
+.role-group .class-max{background:var(--accent)}
+.class-limits{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.class-limits li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #c9c8a6}
+.class-limits li:last-child{border-bottom:0}
+.class-limits .class-name{font-weight:600;font-size:1.05rem;color:var(--ink)}
+.class-limits .class-max{padding:1px 10px;border-radius:3px;background:var(--ink);color:var(--paper);font-size:.9rem;font-weight:600;white-space:nowrap}
+.class-limits .class-max::before{content:"max ";font-weight:400;opacity:.7}
+
+footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:700px){
+  .about{grid-template-columns:1fr}
+  .server{grid-template-columns:6px 1fr;row-gap:10px;padding-right:16px}
+  .server .players,.server .actions{grid-column:2}
+  .hero .inner{padding:56px 18px 48px}
+  .rules > li{grid-template-columns:32px 1fr;gap:10px}
+  .class-limits{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top"><img alt="" src="images/logo_small.png">Ball Lickers United</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#servers">Servers</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#gameplay">Gameplay</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="inner">
+      <span class="tag">We Are The Ones Who Are The Ball Lickers</span>
+      <h1>Ball Lickers United</h1>
+      <p>Gently modded TF2 and TF2C servers.</p>
+      <a class="btn" href="#servers">Join</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About us</h2>
+    <div class="about paper">
+      <div>
+        <p>Ball Lickers United is a server community for Team Fortress 2 and Team Fortress 2 Classified.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Servers</span><b>2</b></li>
+        <li><span>Discord</span><a href="https://discord.gg/ruyzwmW8cu" target="_blank" rel="noopener">https://discord.gg/ruyzwmW8cu</a></li>
+        <li><span>Steam Group</span><a href="https://steamcommunity.com/groups/BallLickersUnited" target="_blank" rel="noopener">https://steamcommunity.com/groups/BallLickersUnited</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="servers">
+    <h2>Servers</h2>
+    <div class="servers" id="serverList"></div>
+  </section>
+
+  <section id="rules">
+    <h2>Rules</h2>
+    <div class="paper">
+      <ol class="rules">
+        <li><div><strong>Be respectful.</strong><span>No harassment, slurs, hate speech, or targeting other players.</span></div></li>
+        <li><div><strong>No toxicity.</strong><span>Don't be an asshole, it's just a video game.</span></div></li>
+        <li><div><strong>No cheating.</strong><span>Any form of software-assisted cheating will result in a permanent ban.</span></div></li>
+        <li><div><strong>Play the game.</strong><span>Playing non-combatively/being "friendly" is not allowed.</span></div></li>
+        <li><div><strong>Listen to staff.</strong><span>Admins and mods have the final say. Appeal bans on our Discord.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="gameplay">
+  <h2>Gameplay Considerations</h2>
+  <div class="paper">
+    <div>
+      <p>The following gameplay changes apply to both the TF2 and TF2C servers.</p>
+    </div>
+    <ol class="rules">
+      <li><div><strong>No Random Crits</strong></div></li>
+      <li><div><strong>No Random Bullet Spread</strong><span>Pellet-based weapons fire in a fixed pattern.</span></div></li>
+      <li><div><strong>All-Talk</strong><span>Each team can hear the other in voice chat.</span></div></li>
+      <li><div><strong>Sniper Reverse Damage Falloff</strong><span>Sniper Rifles have reverse damage falloff applied to them, with headshots only registering as critical hits at distances greater than 1200 Hammer units.</span></div></li>
+      <li><div><strong>Sniper Reduced Bodyshot Damage</strong><span>Sniper Rifles only do up to 2.5x base damage on fully-charged bodyshots.</span></div></li>
+      <li><div><strong>Distance-Based Jarate/Mad Milk Effect Duration</strong><span>The duration of the Jarate and Mad Milk's effects are based on the coated player's distance from the center of the splash, with a minimum time of 2 seconds.</span></div></li>
+      <li><div><strong>Role Limits</strong><span>An experimental role limit plugin is in use. There may be up to 4 of each role. <i>(pick, support, power)</i></span></div></li>
+      <li>
+        <div>
+          <strong>Class Limits</strong>
+          <span>In addition to role limits, the following class limits apply within those roles.</span>
+          <div class="class-roles">
+            <div class="role-group pick">
+              <h3>Pick</h3>
+              <ul class="class-limits">
+                <li><span class="class-name">Scout</span><span class="class-max">4</span></li>
+                <li><span class="class-name">Spy</span><span class="class-max">2</span></li>
+                <li><span class="class-name">Sniper</span><span class="class-max">1</span></li>
+              </ul>
+            </div>
+            <div class="role-group support">
+              <h3>Support</h3>
+              <ul class="class-limits">
+                <li><span class="class-name">Pyro</span><span class="class-max">4</span></li>
+                <li><span class="class-name">Engineer</span><span class="class-max">2</span></li>
+                <li><span class="class-name">Medic</span><span class="class-max">2</span></li>
+              </ul>
+            </div>
+            <div class="role-group power">
+              <h3>Power</h3>
+              <ul class="class-limits">
+                <li><span class="class-name">Soldier</span><span class="class-max">4</span></li>
+                <li><span class="class-name">Demoman</span><span class="class-max">2</span></li>
+                <li><span class="class-name">Heavy</span><span class="class-max">2</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+  <footer>
+    <div class="row">
+      <span>&copy; 2026 Ball Lickers United</span>
+      <span>Not affiliated with Valve Corporation. Team Fortress 2 is a trademark of Valve.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+var SERVERS = [
+  {name:"[TF2C] Ball Lickers United | 24/7 CTF | NA-Atlanta", ip:"74.91.112.203", port:27015},
+  {name:"[TF2] Ball Lickers United | 24/7 Variety | NA-Atlanta", ip:"74.91.112.203", port:27016},
+];
+var list = document.getElementById("serverList");
+SERVERS.forEach(function(s){
+  var addr = s.ip + ":" + s.port;
+  var el = document.createElement("div");
+  el.className = "server " + s.team;
+  el.innerHTML = '<div class="bar"></div><div><h3></h3><div class="meta"></div></div><div class="players"></div><div class="actions"></div>';
+  el.querySelector("h3").textContent = s.name;
+  el.querySelector(".meta").textContent = addr;
+//  el.querySelector(".players").textContent = s.players + " / " + s.max + " players";
+  var join = document.createElement("a");
+  join.className = "btn"; join.textContent = "Join"; join.href = "steam://connect/" + addr;
+  var copy = document.createElement("button");
+  copy.className = "btn ghost"; copy.type = "button"; copy.textContent = "Copy IP";
+  copy.onclick = function(){
+    function done(){ copy.textContent = "Copied"; setTimeout(function(){ copy.textContent = "Copy IP"; }, 1500); }
+    try { navigator.clipboard.writeText(addr).then(done, function(){ copy.textContent = addr; }); }
+    catch(e){ copy.textContent = addr; }
+  };
+  var a = el.querySelector(".actions"); a.appendChild(join); a.appendChild(copy);
+  list.appendChild(el);
+});
+</script>
+</body>
+</html>
